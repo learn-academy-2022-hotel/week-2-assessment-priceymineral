@@ -76,7 +76,7 @@ const randomNouns2 = ["temperature", "database", "chopsticks", "mango"]
     // test each of the two input arrays
 describe("toCapitalLetters", () => {
     it("returns the input array with all its string capitalized", () => {
-        expect(toCapitalLetters(randomNouns1)).toEqual(["STREETLAMP", "POTATO", "TEETH", "CONCLUSION"])
+        expect(toCapitalLetters(randomNouns1)).toEqual(["STREETLAMP", "POTATO", "TEETH", "CONCLUSION", "NEPHEW"])
         expect(toCapitalLetters(randomNouns2)).toEqual(["TEMPERATURE", "DATABASE", "CHOPSTICKS", "MANGO"])
 
     })
@@ -89,6 +89,14 @@ describe("toCapitalLetters", () => {
         // capitalize the current string in the array 
         // push it to a new array
     // return the new array
+const toCapitalLetters = (arr) => {
+    let newArr = []
+    for (let i = 0; i < arr.length; i++) {
+        newArr.push(arr[i].toUpperCase())
+    }
+    return newArr
+}
+
 // --------------------3) Create a function that takes in a string and logs the index of the first vowel.
 
 // a) Create a test with expect statements for each of the variables provided.
