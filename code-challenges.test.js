@@ -99,7 +99,6 @@ const toCapitalLetters = (arr) => {
 
 // --------------------3) Create a function that takes in a string and logs the index of the first vowel.
 
-// a) Create a test with expect statements for each of the variables provided.
 
 const vowelTester1 = "learn"
 // Expected output: 1
@@ -108,4 +107,28 @@ const vowelTester2 = "academy"
 const vowelTester3 = "challenges"
 // Expected output: 2
 
+// a) Create a test with expect statements for each of the variables provided.
+// PSEUDO
+// create a test for a function called firstVowelIndex which takes in a string as a parameter
+    // it should take in the string and return a number
+    // test each of the 3 inputs given
+describe("firstVowelIndex", () => {
+    it("returns the index of the first vowel in the input string", () => {
+        expect(firstVowelIndex(vowelTester1)).toEqual(1)
+        expect(firstVowelIndex(vowelTester2)).toEqual(0)
+        expect(firstVowelIndex(vowelTester3)).toEqual(2)
+    })
+})
 // b) Create the function that makes the test pass.
+// create a fxn that takes in an array
+    // loop through the string
+        // if the current letter is a vowel
+            // return the current index
+const firstVowelIndex = (str) => {
+    let vowels = ["a", "e", "i", "o", "u"]    
+    for (let i = 0; i < str.length; i++) {
+        if (vowels.includes(str[i])) {
+            return i
+        }
+    }
+}
