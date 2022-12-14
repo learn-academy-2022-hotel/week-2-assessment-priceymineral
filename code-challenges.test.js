@@ -1,5 +1,7 @@
 // ASSESSMENT 2: Coding Practical Questions with Jest
 
+const { isDirective } = require("@babel/types")
+
 // Please read all questions thoroughly
 // Pseudo coding is REQUIRED
 // If you get stuck, please leave comments to help us understand your thought process
@@ -23,8 +25,6 @@ const numbersArray2 = [24, 27, 30, 33, 36]
 
 // --------------------1) Create a function that takes a object as an argument and decides if the number inside it is evenly divisible by three or not.
 
-// a) Create a test with expect statements for each of the variables provided.
-
 const object1 = { number: 15 }
 // Expected output: "15 is divisible by three"
 const object2 = { number: 0 }
@@ -32,22 +32,73 @@ const object2 = { number: 0 }
 const object3 = { number: -7 }
 // Expected output: "-7 is not divisible by three"
 
+// a) Create a test with expect statements for each of the variables provided.
+// PSEUDO CODE
+// write the jest test for a fxn called isDivisibyByThree
+    // describe what it does
+        // use the variables provided
+        // run in terminal and check for "good" error ("fxn not defined")
+describe("isDivisibleByThree", () => {
+    it("returns a string telling us whether the input number is divisible by 3", () => {
+        expect(isDivisibleByThree(object1)).toEqual("15 is divisible by three")
+        expect(isDivisibleByThree(object2)).toEqual("0 is divisible by three")
+        expect(isDivisibleByThree(object3)).toEqual("-7 is not divisible by three")
+    })
+})
 // b) Create the function that makes the test pass.
+// PSEUDO CODE
+// create a fxn that takes 1 object as a parameter
+    // create a variable to store the number in question.Access the number input object 
+    // if dividing the number by 3 returns 0
+        // return "<number> is divisible by three"
+    // else 
+        // return "<number> is divisible by three"
+const isDivisibleByThree = (obj) => {
+    let num = obj.number 
+    if (num % 3 === 0) {
+        return `${num} is divisible by three`
+    } else {
+        return `${num} is not divisible by three`
+    }
+}
 
 // --------------------2) Create a function that takes in an array of words and returns an array with all the words capitalized.
-
-// a) Create a test with expect statements for each of the variables provided.
 
 const randomNouns1 = ["streetlamp", "potato", "teeth", "conclusion", "nephew"]
 // Expected output: ["Streetlamp", "Potato", "Teeth", "Conclusion", "Nephew"]
 const randomNouns2 = ["temperature", "database", "chopsticks", "mango"]
 // Expected output: ["Temperature", "Database", "Chopsticks", "Mango"]
 
+// a) Create a test with expect statements for each of the variables provided.
+// PSEUDO
+// create a test for a fxn called toCapitalLetters
+    // it will test whether toCapitalLetters returns an array with all its strings capitalized
+    // test each of the two input arrays
+describe("toCapitalLetters", () => {
+    it("returns the input array with all its string capitalized", () => {
+        expect(toCapitalLetters(randomNouns1)).toEqual(["STREETLAMP", "POTATO", "TEETH", "CONCLUSION", "NEPHEW"])
+        expect(toCapitalLetters(randomNouns2)).toEqual(["TEMPERATURE", "DATABASE", "CHOPSTICKS", "MANGO"])
+
+    })
+})
+
 // b) Create the function that makes the test pass.
+// PSEUDO
+// Create a fxn that takes in an array of strings
+    // loop through the array
+        // capitalize the current string in the array 
+        // push it to a new array
+    // return the new array
+const toCapitalLetters = (arr) => {
+    let newArr = []
+    for (let i = 0; i < arr.length; i++) {
+        newArr.push(arr[i].toUpperCase())
+    }
+    return newArr
+}
 
 // --------------------3) Create a function that takes in a string and logs the index of the first vowel.
 
-// a) Create a test with expect statements for each of the variables provided.
 
 const vowelTester1 = "learn"
 // Expected output: 1
@@ -56,4 +107,28 @@ const vowelTester2 = "academy"
 const vowelTester3 = "challenges"
 // Expected output: 2
 
+// a) Create a test with expect statements for each of the variables provided.
+// PSEUDO
+// create a test for a function called firstVowelIndex which takes in a string as a parameter
+    // it should take in the string and return a number
+    // test each of the 3 inputs given
+describe("firstVowelIndex", () => {
+    it("returns the index of the first vowel in the input string", () => {
+        expect(firstVowelIndex(vowelTester1)).toEqual(1)
+        expect(firstVowelIndex(vowelTester2)).toEqual(0)
+        expect(firstVowelIndex(vowelTester3)).toEqual(2)
+    })
+})
 // b) Create the function that makes the test pass.
+// create a fxn that takes in an array
+    // loop through the string
+        // if the current letter is a vowel
+            // return the current index
+const firstVowelIndex = (str) => {
+    let vowels = ["a", "e", "i", "o", "u"]    
+    for (let i = 0; i < str.length; i++) {
+        if (vowels.includes(str[i])) {
+            return i
+        }
+    }
+}
